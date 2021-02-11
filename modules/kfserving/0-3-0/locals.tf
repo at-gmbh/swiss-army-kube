@@ -6,7 +6,6 @@ locals {
       "metadata" = {
         "name" = "kfserving"
         "labels" = {
-          "control-plane"   = "kubeflow"
           "istio-injection" = "disabled"
         }
       }
