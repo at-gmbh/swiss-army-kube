@@ -6,7 +6,9 @@ locals {
       "metadata" = {
         "name" = "kfserving"
         "labels" = {
-          "istio-injection" = "disabled"
+          "istio-injection" = "disabled",
+          "control-plane" = "kfserving-controller-manager",
+          "controller-tools.k8s.io" = "1.0"
         }
       }
     })
