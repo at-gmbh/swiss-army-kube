@@ -26,6 +26,14 @@ variable "vpc_id" {
   type        = string
   description = "VPC id"
 }
+variable "workers_additional_policies" {
+  type        = list
+  description = "Additional IAM policies to attach to worker nodes"
+  default = []
+}
+
+
+
 
 variable "availability_zones" {
   type        = list(string)
