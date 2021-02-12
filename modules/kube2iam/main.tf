@@ -6,14 +6,6 @@ resource local_file kube2iam_def {
 }
 
 
-resource local_file namespace {
-  content = local.namespace
-  filename = "${path.root}/${var.argocd.path}/kube2iam-namespace.yaml"
-}
-
-
-
-
 resource local_file kube2iam {
   content = yamlencode({
     "apiVersion" = "argoproj.io/v1alpha1"
