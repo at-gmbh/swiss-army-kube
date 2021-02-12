@@ -16,7 +16,7 @@ resource local_file kube2iam {
     }
     "spec" = {
       "destination" = {
-        "namespace" = "kube2iam"
+        "namespace" = "kube-system"
         "server"    = "https://kubernetes.default.svc"
       }
       "project" = "default"
