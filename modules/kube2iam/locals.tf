@@ -56,8 +56,6 @@ spec:
           name: kube2iam
           args:
             - "--base-role-arn=${var.base_role_arn}"
-            - "--iptables=true"
-            - "--host-ip=$(HOST_IP)"
             - "--node=$(NODE_NAME)"
           env:
             - name: NODE_NAME
@@ -68,7 +66,5 @@ spec:
             - containerPort: 8181
               hostPort: 8181
               name: http
-          securityContext:
-            privileged: true
 EOT
 }
