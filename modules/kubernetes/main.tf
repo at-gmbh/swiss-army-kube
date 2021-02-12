@@ -28,11 +28,7 @@ module "eks" {
     Project     = var.project
   }
 
-  workers_additional_policies = flatten(
-    [
-      ["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"], var.workers_additional_policies
-    ]
-  )
+  workers_additional_policies = local.workers_additional_policies
 
   workers_group_defaults = {
     additional_userdata = "sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm && sudo systemctl enable amazon-ssm-agent && sudo systemctl start amazon-ssm-agent"

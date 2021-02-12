@@ -1,7 +1,15 @@
 locals {
+
+  workers_additional_policies = flatten(
+    [
+      ["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"], var.workers_additional_policies
+    ]
+  )
+
   common = values({
     for index, az in var.availability_zones :
     az => {
+      workers_additional_policies              = local.workers_additional_policies
       name_prefix                              = "on-demand-common-${index}"
       override_instance_types                  = var.on_demand_common_instance_type
       asg_max_size                             = var.on_demand_common_max_cluster_size
@@ -37,6 +45,7 @@ locals {
 
   cpu = values({
     "cpu" = {
+      workers_additional_policies              = local.workers_additional_policies
       name_prefix                              = "on-demand-cpu-"
       override_instance_types                  = var.on_demand_cpu_instance_type
       asg_max_size                             = var.on_demand_cpu_max_cluster_size
@@ -77,6 +86,7 @@ locals {
 
   gpu = values({
     "gpu" = {
+      workers_additional_policies              = local.workers_additional_policies
       name_prefix                              = "on-demand-gpu-"
       override_instance_types                  = var.on_demand_gpu_instance_type
       asg_max_size                             = var.on_demand_gpu_max_cluster_size
