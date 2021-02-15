@@ -21,6 +21,8 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "v2.33.0"
 
+  tags = local.tags
+
   name = var.cluster_name
 
   cidr = local.cidr
@@ -50,10 +52,4 @@ module "vpc" {
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
 
-  tags = {
-    Name        = "${var.environment}-${var.cluster_name}"
-    Environment = var.environment
-    Project     = var.project
-    Terraform   = "true"
-  }
 }
