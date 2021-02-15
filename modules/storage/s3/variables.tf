@@ -23,4 +23,4 @@ variable "trusted_role_arns" {
   type        = list
   description = "ARNs of roles that are allowed to assume the role for read/write access to the S3 bucket"
   default     = []
-
+}
