@@ -8,8 +8,8 @@ variable "s3_bucket_name" {
 }
 
 variable "cluster_name" {
-  type        = list
-  description = "vpc subnets"
+  type        = string
+  description = "Name of the EKS cluster"
 }
 
 
