@@ -95,11 +95,11 @@ module "s3_role" {
   role_requires_mfa = false
 
   custom_role_policy_arns = [
-    aws_iam_role_policy.s3_role.arn
+    aws_iam_policy.s3_role.arn
   ]
 
   number_of_custom_role_policy_arns = 1
-  tags = local.tags
+  tags = var.tags
 }
 
 

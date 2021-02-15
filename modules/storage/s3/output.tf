@@ -3,7 +3,7 @@ output s3_user_arn {
 }
 
 output s3_role_arn {
-  value = aws_iam_role.s3_role.arn
+  value = module.s3_role.arn
 }
 
 
