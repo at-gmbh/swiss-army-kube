@@ -5,7 +5,7 @@ data "aws_ami" "eks_gpu_worker" {
   }
 
   most_recent = true
-  owners      = ["602401143452"] // The ID of the owner of the official AWS EKS AMIs.
+  owners      = ["602401143452"] // The ID of the owner of the official AWS EKS AMIs.  
 }
 
 
@@ -23,10 +23,8 @@ module "eks" {
   map_users = var.aws_auth_user_mapping
   map_roles = var.aws_auth_role_mapping
 
-  tags = {
-    Environment = var.environment
-    Project     = var.project
-  }
+  tags = local.tags
+
 
   workers_additional_policies = local.workers_additional_policies
 

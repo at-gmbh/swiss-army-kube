@@ -10,6 +10,14 @@ variable "project" {
   default     = "EDUCATION"
 }
 
+variable "tags" {
+  type        = map(string)
+  description = "Tags to add to AWS resources"
+  default     = null
+}
+
+
+
 variable "cluster_name" {
   type        = string
   description = "Name of EKS cluster"
