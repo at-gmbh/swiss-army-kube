@@ -25,8 +25,10 @@ variable users {
 }
 
 
-variable tags {
+
+variable "tags" {
   type        = map(string)
-  description = "A set of tags"
+  description = "Tags to add to AWS resources"
   default     = {}
 }
+

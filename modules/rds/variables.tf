@@ -121,12 +121,6 @@ variable "rds_database_delete_protection" {
   description = "enabled delete protection for database"
 }
 
-variable "rds_database_tags" {
-  default     = {}
-  description = "Additional tags for rds instance"
-  type        = map(string)
-}
-
 
 
 variable "rds_iam_database_authentication_enabled" {
@@ -160,3 +154,8 @@ variable worker_security_group_id {
 
 }
 
+variable tags {  
+  description = "Additional tags for AWS resources"
+  type = map(string)
+  default = {}
+}

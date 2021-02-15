@@ -1,11 +1,13 @@
 
 data "aws_subnet_ids" "all" {
   vpc_id = var.vpc_id
+  tags = var.tags
 }
 
 data "aws_security_group" "default" {
   vpc_id = var.vpc_id
   name   = "default"
+  tags = var.tags
 }
 
 
@@ -27,6 +29,7 @@ resource "aws_security_group" "eks_workers" {
     protocol = "tcp"
     security_groups = [var.worker_security_group_id]
   }
+  tags = var.tags
 }
 
 
@@ -40,6 +43,7 @@ resource "aws_ssm_parameter" "rds_password" {
   name  = "/rds-${var.rds_database_name}/${var.cluster_name}/${var.rds_database_username}"
   type  = "SecureString"
   value = var.rds_database_password != "" ? var.rds_database_password : random_password.rds_password.result
+  tags = var.tags
 }
 
 module "db" {
@@ -75,13 +79,7 @@ module "db" {
   # disable backups to create DB faster
   backup_retention_period = 0
 
-  tags = merge(
-    var.rds_database_tags,
-    {
-      Project     = var.project
-      Environment = var.environment
-    },
-  )
+  tags = var.tags
 
   enabled_cloudwatch_logs_exports = var.rds_enabled_cloudwatch_logs_exports
 

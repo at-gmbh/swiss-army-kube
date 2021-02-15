@@ -37,3 +37,12 @@ variable "availability_zones" {
   type        = list
   default     = []
 }
+
+
+
+variable "tags" {
+  type        = map(string)
+  description = "Tags to add to AWS resources"
+  default     = {}
+}
+

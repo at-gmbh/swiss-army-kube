@@ -11,11 +11,14 @@ variable cluster_name {
   description = "A name of the cluster"
 }
 
-variable tags {
+
+
+variable "tags" {
   type        = map(string)
-  description = "A set of tags"
+  description = "Tags to add to AWS resources"
   default     = {}
 }
+
 
 variable invite_template {
   type        = map(string)
