@@ -13,3 +13,11 @@ output s3_user_access_key {
     secret =aws_iam_access_key.s3_user.secret
   }
 }
+output s3_bucket_arn {
+  value = aws_s3_bucket.kubeflow.arn
+}
+
+
+output s3_bucket_name {
+  value = aws_s3_bucket.kubeflow.bucket
+}
