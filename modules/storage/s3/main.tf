@@ -21,12 +21,10 @@ resource "aws_s3_bucket" "kubeflow" {
 resource "aws_iam_user" "s3_user" {
   name = "${var.cluster_name}-s3-user"
   path = "/system/"
-  tags = var.tags
 }
 
 resource "aws_iam_access_key" "s3_user" {
   user = aws_iam_user.s3_user.name
-  tags = var.tags
 }
 
 resource "aws_iam_user_policy" "s3_user" {
@@ -60,7 +58,6 @@ EOT
 resource "aws_iam_role" "s3_role" {
   name = "${var.cluster_name}-s3-role"
   path = "/system/"
-  tags = var.tags
 }
 
 resource "aws_iam_role_policy" "s3_role" {
