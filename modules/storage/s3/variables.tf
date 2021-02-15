@@ -19,3 +19,9 @@ variable "tags" {
   default     = {}
 }
 
+variable "trusted_role_arns" {
+  type        = []
+  description = "ARNs of roles that are allowed to assume the role for read/write access to the S3 bucket"
+  default     = {}
+}
+
