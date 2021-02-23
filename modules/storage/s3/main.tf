@@ -21,6 +21,7 @@ resource "aws_s3_bucket" "kubeflow" {
 resource "aws_iam_user" "s3_user" {
   name = "${var.cluster_name}-s3-user"
   path = "/system/"
+  tags = var.tags
 }
 
 resource "aws_iam_access_key" "s3_user" {
