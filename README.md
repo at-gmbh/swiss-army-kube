@@ -7,8 +7,7 @@
 **[Quickstart](./QUICKSTART.md)** • **[Modules](./modules/README.md)** • **[Configure Deployment](./examples/common/CONFIGURE.md)** • **[Troubleshooting](./docs/TROUBLESHOOTING.md)** • **[Contributing](./CONTRIBUTING.md)** • **[Provectus](https://provectus.com/)**
 
 
-# Swiss Army Kube - Free IaC Tool for Easy EKS Kubernetes Cluster Deployment.  
-
+# Swiss Army Kube - Free IaC Tool for Easy EKS Kubernetes Cluster Deployment
 
 <img src="./images/swiss-arky-kube-logo.jpg" width="400px" alt="logo"/>&nbsp;
 
