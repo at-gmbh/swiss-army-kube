@@ -52,11 +52,45 @@ resource aws_cognito_user_pool this {
       email_subject = var.invite_template.email_subject
       sms_message   = var.invite_template.sms_message
     }
+    allow_admin_create_user_only = true
   }
   tags = var.tags
 
   mfa_configuration = var.mfa_configuration
   sms_authentication_message = "Your code is {####}"
+
+  auto_verified_attributes = [
+    "email"
+  ]
+
+  username_configuration {
+    case_sensitive = true
+  }
+
+  password_policy {
+    minimum_length                   = 8
+    require_lowercase                = true
+    require_numbers                  = true
+    require_symbols                  = true
+    require_uppercase                = true
+    temporary_password_validity_days = 7
+  }
+  
+  schema {
+    attribute_data_type      = "String"
+    name                     = "phone_number"
+    mutable                  = true
+    required                 = true
+    
+    string_attribute_constraints {
+      min_length = 6
+      max_length = 32
+    }
+  }
+
+  user_pool_add_ons {
+    advanced_security_mode = var.advanced_security_mode
+  }
 
   dynamic "sms_configuration" {
     for_each = var.mfa_configuration == "OFF" ? [] : list(var.mfa_configuration)
@@ -73,7 +107,7 @@ resource aws_cognito_user_pool this {
       priority = 1
     }
   }
-
+  
 }
 
 resource aws_cognito_user_pool_domain this {

@@ -23,6 +23,12 @@ variable mfa_configuration {
   default     = "ON"
 }
 
+variable advanced_security_mode {
+  type        = string
+  description = "Sets Advanced Security for a user pool (OFF, AUDIT, ENFORCED)"
+  default     = "ENFORCED"
+}
+
 variable acm_arn {
   type = string
   description = "The ARN of an ACM certificate to attach to the Load Balancer"
