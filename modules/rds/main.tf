@@ -50,8 +50,10 @@ module "db" {
   allocated_storage    = var.rds_allocated_storage
   storage_encrypted    = var.rds_storage_encrypted
 
-  create_option_group = false
-  parameter_group_name = var.rds_instance_name
+  #Use a default parameter/option group provided by AWS
+  #https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest
+  create_option_group = false  
+  create_parameter_group = false
 
   kms_key_id = var.rds_kms_key_id
   name       = var.rds_database_name
