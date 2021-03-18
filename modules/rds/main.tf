@@ -100,7 +100,9 @@ module "db" {
   # For snapshot_identifier to be null
   snapshot_identifier = null
 
-  create_option_group = false  
-  create_parameter_group = false
+  option_group_use_name_prefix = true
+  option_group_name = var.rds_instance_name
+  parameter_group_use_name_prefix = true
+  parameter_group_name = var.rds_instance_name
 
 }
