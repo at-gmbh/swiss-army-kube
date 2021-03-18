@@ -39,7 +39,7 @@ resource "aws_ssm_parameter" "rds_password" {
 module "db" {
 
   source  = "terraform-aws-modules/rds/aws"
-  version = "2.20"
+  version = "~> 2.33"
 
   identifier = var.rds_instance_name
 
@@ -49,6 +49,9 @@ module "db" {
   instance_class       = var.rds_database_instance
   allocated_storage    = var.rds_allocated_storage
   storage_encrypted    = var.rds_storage_encrypted
+
+  create_option_group = false
+  parameter_group_name = var.rds_instance_name
 
   kms_key_id = var.rds_kms_key_id
   name       = var.rds_database_name
