@@ -52,9 +52,7 @@ module "db" {
 
   #Use a default parameter/option group provided by AWS
   #https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest
-  create_option_group = false  
-  create_parameter_group = false
-
+  
   kms_key_id = var.rds_kms_key_id
   name       = var.rds_database_name
   multi_az   = var.rds_database_multi_az
@@ -101,5 +99,8 @@ module "db" {
 
   # For snapshot_identifier to be null
   snapshot_identifier = null
+
+  create_option_group = false  
+  create_parameter_group = false
 
 }
